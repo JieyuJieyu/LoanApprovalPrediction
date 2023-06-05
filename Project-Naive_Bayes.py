@@ -7,7 +7,6 @@
 # import libraries
 import numpy as np
 import pandas as pd
-import sklearn
 from sklearn.preprocessing import LabelEncoder
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, accuracy_score
