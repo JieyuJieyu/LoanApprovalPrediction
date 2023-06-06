@@ -57,7 +57,8 @@ st.subheader('User Input Features')
 st.write(input_df)
 
 # Load dataset
-dataset = pd.read_csv('C:/Users/User/OneDrive/J.E/Sem II 2022_2023/BCI3333 Machine Learning Applications/Final Project/Loan_Train.csv')
+url = 'https://raw.githubusercontent.com/JieyuJieyu/LoanApprovalPrediction/main/Loan_Train.csv'
+dataset = pd.read_csv(url)
 dataset = dataset.drop(columns=['Loan_ID'])
 x = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 11].values
