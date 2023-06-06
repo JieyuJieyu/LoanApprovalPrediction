@@ -9,6 +9,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import requests
 from sklearn.preprocessing import LabelEncoder
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score, accuracy_score
@@ -57,8 +58,21 @@ st.subheader('User Input Features')
 st.write(input_df)
 
 # Load dataset
-url = 'https://raw.githubusercontent.com/JieyuJieyu/LoanApprovalPrediction/main/Loan_Train.csv'
-dataset = pd.read_csv(url)
+# Set the personal access token
+token = "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"
+
+# Load the dataset from the GitHub API using the personal access token
+url = 'https://api.github.com/repos/JieyuJieyu/LoanApprovalPrediction/contents/Loan_Train.csv'
+headers = {"Authorization": f"Bearer {token}"}
+response = requests.get(url, headers=headers)
+data = response.json()
+content = data["content"]
+
+# Decode and load the CSV data
+csv_content = base64.b64decode(content).decode('utf-8')
+dataset = pd.read_csv(io.StringIO(csv_content))
+#url = 'https://raw.githubusercontent.com/JieyuJieyu/LoanApprovalPrediction/main/Loan_Train.csv'
+#dataset = pd.read_csv(url)
 dataset = dataset.drop(columns=['Loan_ID'])
 x = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, 11].values
