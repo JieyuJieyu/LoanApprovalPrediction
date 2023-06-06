@@ -8,7 +8,8 @@ import pandas as pd
 import numpy as np
 
 # Load the dataset
-dataset = pd.read_csv("C:/Users/User/OneDrive/J.E/Sem II 2022_2023/BCI3333 Machine Learning Applications/Final Project/Loan_Train.csv")
+url = 'https://raw.githubusercontent.com/JieyuJieyu/LoanApprovalPrediction/main/Loan_Train.csv'
+dataset = pd.read_csv(url)
 dataset.info()
 
 
